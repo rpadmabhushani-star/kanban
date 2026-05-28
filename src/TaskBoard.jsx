@@ -3,35 +3,35 @@ import useMap from './Map'
 import UseComponents from "./Components";
 
 function TaskBoard() {
-  const initialTasks = useMap()//assiging arrat from map.js
+  const initialTasks = useMap()
 
-  const [tasks, setTasks] = useState(initialTasks)//main state(stores all task)
+  const [tasks, setTasks] = useState(initialTasks)
 
-   const [newTask,setNewTask]=useState("")//stores title input 
-   const [ newDescription, setnewDescription]=useState("")//stores decription input 
+   const [newTask,setNewTask]=useState("")
+   const [ newDescription, setnewDescription]=useState("") 
 
 
-  const addTask = (title,description) => { //receiving title and decription
+  const addTask = (title,description) => { 
 
     const newTaskObj = {
-      id: crypto.randomUUID() ,// asigns ramdom id to fetch task data
+      id: crypto.randomUUID() ,
       title:title,
       description:description,
-      status: "Task_To_Do" //pre asigned status
+      status: "Task_To_Do" 
     };
-    setTasks([...tasks, newTaskObj]); //add new tasks to to array 
+    setTasks([...tasks, newTaskObj]); 
   };
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id)); //deletes by id  
+    setTasks(tasks.filter((task) => task.id !== id));   
   };
 
   const editTask = (id,newTitle,newDescription) => {
     const updatedTasks = tasks.map((task) => {
-      if (task.id === id) {         //get and maps id titlrasnd des
+      if (task.id === id) {         
         return {
           ...task,                       
-          title: newTitle,              //updates all (task and des)
+          title: newTitle,              
           description:newDescription,
         };
       }
